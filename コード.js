@@ -22,3 +22,4 @@ function initSheet () {
 //   // }
 // }
 //こんにちは、clasp!
+// claspでコミットテスト
