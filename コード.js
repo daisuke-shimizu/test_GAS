@@ -1,15 +1,18 @@
 function initSheet () {
+  //現在アクティブなシートを取得
   let sheet = SpreadsheetApp.getActiveSheet();
   let names = ['syrah', 'cabernet', 'zinfandel'];
   let i;
-  //現在アクティブなシートを取得
+  let startTime = new Date();
+  //　現在時刻を取得。
   sheet.clear();
   //シート上のデータをクリア
 
-  for (i = 1; i <= 100; i++) {
+  for (i = 1; i <= 1000; i++) {
     sheet.getRange(i, 1).setValue(names[Math.floor(Math.random() * names.length)]);
     sheet.getRange(i, 2).setValue(Math.floor(Math.floor(Math.random() * 101)));
   }
+  Logger.log(new Date() - startTime);
 }
 
 // function initSheet () {
