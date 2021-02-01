@@ -24,18 +24,19 @@ function initSheet () {
 }
 
 
-  function showResults () {
-    let sheet = SpreadsheetApp.getActiveSheet();
-    let scores = [];
+function showResults () {
+  let sheet = SpreadsheetApp.getActiveSheet();
+  let scores = [];
+  let results = [];
 
-    scores = sheet.getRange(1,2, sheet.getLastRow(), 1).getValues();
-    
-    for (let i = 0; i < scores.length; i ++) {
-      results.push([scores[i] >= 80 ? 'pass' : 'fail']);
-    }
-    // 一行目の三列目のポジションから、、、
-    sheet.getRange(1,3, results.length, 1).setValues(results);
+  scores = sheet.getRange(1,2, sheet.getLastRow(), 1).getValues();
+  
+  for (let i = 0; i < scores.length; i ++) {
+    results.push([scores[i] >= 80 ? 'pass' : 'fail']);
   }
+  // 一行目の三列目のポジションから、、、
+  sheet.getRange(1,3, results.length, 1).setValues(results);
+}
 
 
   // 7118ms
