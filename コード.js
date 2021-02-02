@@ -3,8 +3,12 @@ function initSheet () {
   let sheet = SpreadsheetApp.getActiveSheet();
   let names = ['syrah', 'cabernet', 'zinfandel'];
   let i;
-  let startTime = new Date();
-  //　現在時刻を取得。
+  
+  // ボタンが押された時、「シートを初期化しますか？」と尋ねる。
+  // 引数1:メッセージボックスのタイトル、引数2:表示するテキスト、引数1:メッセージボックスのタイトル
+  if (Browser.msgBox('シートの初期化','実行していいですか？',Browser.Buttons.OK_CANCEL) === 'cancel') {
+    return;
+  }
 
   let scores = [];  
   sheet.clear();
@@ -20,7 +24,6 @@ function initSheet () {
   }
 
   sheet.getRange(1,1, 10, 2).setValues(scores);
-  Logger.log(new Date() - startTime);
 }
 
 
