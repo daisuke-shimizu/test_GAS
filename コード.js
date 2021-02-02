@@ -6,9 +6,9 @@ function initSheet () {
   
   // ボタンが押された時、「シートを初期化しますか？」と尋ねる。
   // 引数1:メッセージボックスのタイトル、引数2:表示するテキスト、引数1:メッセージボックスのタイトル
-  if (Browser.msgBox('シートの初期化','実行していいですか？',Browser.Buttons.OK_CANCEL) === 'cancel') {
-    return;
-  }
+  // if (Browser.msgBox('シートの初期化','実行していいですか？',Browser.Buttons.OK_CANCEL) === 'cancel') {
+  //   return;
+  // }
 
   let scores = [];  
   sheet.clear();
@@ -39,6 +39,19 @@ function showResults () {
   }
   // 一行目の三列目のポジションから、、、
   sheet.getRange(1,3, results.length, 1).setValues(results);
+}
+
+// メニューバーを表示させる関数
+function onOpen() {
+  // getActiveSpreadSheet(): 現在アクティブなシートを選択。正確。
+  let spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
+  let items = [
+    {name: '初期化', functionName: 'initSheet'},
+    null,
+    {name: '判定', functionName: 'showResults'}
+  ];
+
+  spreadsheet.addMenu('スコア管理', items);
 }
 
 
